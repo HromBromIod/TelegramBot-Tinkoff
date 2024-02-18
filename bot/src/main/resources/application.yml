@@ -1,9 +1,9 @@
 app:
-  telegram-token: unset
+  telegram-token: 6838376936:AAHwLnqciau0H0aksTnz0lY6SINrAz9cnOY
 
 spring:
   application:
-    name: bot
+    name: TrackAndNotifyBot
   jackson:
     time-zone: UTC
 

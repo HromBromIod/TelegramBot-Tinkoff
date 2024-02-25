@@ -5,6 +5,7 @@ import com.pengrad.telegrambot.request.SendMessage;
 import edu.java.bot.users.UserRepository;
 
 public interface Command {
-    public SendMessage apply(Update update, UserRepository users);
-    public String describe();
+    SendMessage apply(Update update, UserRepository users);
+
+    String describe();
 }

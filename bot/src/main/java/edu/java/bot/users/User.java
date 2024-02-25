@@ -6,10 +6,10 @@ import java.util.List;
 
 @SuppressWarnings("MultipleStringLiterals")
 public class User {
-    private String name;
-    private Long id;
+    private final String name;
+    private final Long id;
     private Status status;
-    private List<String> urls;
+    private final List<String> urls;
 
     public User(Long id, String name) {
         this.id = id;
@@ -24,7 +24,8 @@ public class User {
 
     public String getUrls() {
         if (!urls.isEmpty()) {
-            return urls.toString().substring(1, urls.toString().length() - 1);
+            //return urls.toString().substring(1, urls.toString().length() - 1);
+            return urls.stream().reduce("", (str, url) -> str + url + '\n');
         }
         return "You do not have tracked urls";
     }
@@ -40,6 +41,9 @@ public class User {
     public String addUrl(String url) {
         URLChecker checker = new URLChecker();
         if (checker.check(url)) {
+            if (urls.contains(url)) {
+                return "You are already tracking this url";
+            }
             urls.add(url);
             return "You are tracking this url now";
         }

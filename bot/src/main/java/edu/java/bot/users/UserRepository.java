@@ -1,10 +1,12 @@
 package edu.java.bot.users;
 
+import org.springframework.stereotype.Repository;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Users {
-    public Users() {
+@Repository
+public class UserRepository {
+    public UserRepository() {
     }
 
     public Map<Long, User> mapOfUsers = new HashMap<>();
@@ -13,17 +15,13 @@ public class Users {
         return mapOfUsers.getOrDefault(id, null);
     }
 
-    public String add(User newUser) {
-        try {
+    public void add(User newUser) {
+        if (!mapOfUsers.containsKey(newUser.getId())) {
             mapOfUsers.put(newUser.getId(), newUser);
-            return newUser.getId() + "was added";
-        } catch (NullPointerException exception) {
-            return exception.getMessage();
         }
     }
 
-    public String remove(Long id) {
+    public void remove(Long id) {
         mapOfUsers.remove(id);
-        return id + "was removed";
     }
 }

@@ -11,13 +11,14 @@ public class URLChecker {
     private final List<String> urls = Arrays.asList("https://github.com", "https://stackoverflow.com");
 
     public boolean check(String link) {
+        return checkURL(link) && urls.stream().anyMatch(link::startsWith);
+    }
+
+    private boolean checkURL(String link) {
         try {
-            URL isLink = new URL(link);
-            return !urls.stream()
-                .filter(link::startsWith)
-                .toList()
-                .isEmpty();
-        } catch (MalformedURLException e) {
+            new URL(link);
+            return true;
+        } catch (MalformedURLException | IllegalArgumentException exception) {
             return false;
         }
     }

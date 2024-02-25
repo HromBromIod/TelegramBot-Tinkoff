@@ -10,24 +10,27 @@ import edu.java.bot.commands.Stop;
 import edu.java.bot.commands.Track;
 import edu.java.bot.commands.UnTrack;
 import edu.java.bot.users.Status;
-import edu.java.bot.users.Users;
+import edu.java.bot.users.UserRepository;
 import java.util.Map;
 
 @SuppressWarnings({"MultipleStringLiterals", "ReturnCount"})
 public class BotControl {
-    Map<String, Command> commands = Map.of(
-        "/start", new Start(),
+    private final Map<String, Command> commands = Map.of(
         "/help", new Help(),
+        "/start", new Start(),
         "/track", new Track(),
         "/untrack", new UnTrack(),
         "/list", new List(),
         "/stop", new Stop()
     );
 
+    private final UserRepository users;
+
     public BotControl() {
+        users = new UserRepository();
     }
 
-    public SendMessage handle(Update update, Users users) {
+    public SendMessage handle(Update update) {
         Long id = update.message().chat().id();
         if (users.find(id) != null && users.find(id).getStatus().equals(Status.ADD_LINK)) {
             users.find(id).setStatus(Status.NONE);

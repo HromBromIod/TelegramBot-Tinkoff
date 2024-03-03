@@ -1,7 +1,5 @@
-package edu.java.bot;
+package edu.java.bot.configuration;
 
-import edu.java.bot.botControl.TrackAndNotifyBot;
-import edu.java.bot.configuration.ApplicationConfig;
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
@@ -16,11 +14,5 @@ public class BotApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(BotApplication.class, args);
-    }
-
-    @PostConstruct
-    public void runBot() {
-        TrackAndNotifyBot bot = new TrackAndNotifyBot(applicationConfig.telegramToken());
-        bot.run();
     }
 }

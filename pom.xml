@@ -49,7 +49,6 @@
         <module>bot</module>
         <module>scrapper</module>
         <module>modules</module>
-        <module>modules</module>
     </modules>
 
     <dependencyManagement>

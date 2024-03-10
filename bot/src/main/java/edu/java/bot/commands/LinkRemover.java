@@ -9,7 +9,10 @@ public class LinkRemover implements Command {
     @Override
     public SendMessage apply(Update update, UserRepository users) {
         users.find(update.message().chat().id()).setStatus(Status.NONE);
-        return new SendMessage(update.message().chat().id(), users.find(update.message().chat().id()).removeUrl(update.message().text()));
+        return new SendMessage(
+            update.message().chat().id(),
+            users.find(update.message().chat().id()).removeUrl(update.message().text())
+        );
     }
 
     @Override

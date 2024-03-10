@@ -24,7 +24,6 @@ public class User {
 
     public String getUrls() {
         if (!urls.isEmpty()) {
-            //return urls.toString().substring(1, urls.toString().length() - 1);
             return urls.stream().reduce("", (str, url) -> str + url + '\n');
         }
         return "You do not have tracked urls";

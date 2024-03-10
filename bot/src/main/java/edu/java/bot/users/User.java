@@ -53,8 +53,11 @@ public class User {
     public String removeUrl(String url) {
         URLChecker checker = new URLChecker();
         if (checker.check(url)) {
-            urls.remove(url);
-            return "You are not tracking this url now";
+            if (urls.contains(url)) {
+                urls.remove(url);
+                return "You are not tracking this url now";
+            }
+            return "This url is not tracking now";
         }
         return "Your text is not an url";
     }

@@ -1,6 +1,6 @@
-package edu.java.bot.configuration;
+package edu.java.bot;
 
-import jakarta.annotation.PostConstruct;
+import edu.java.bot.configuration.ApplicationConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

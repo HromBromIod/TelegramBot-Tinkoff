@@ -12,11 +12,12 @@ public record ApplicationConfig(
     @NotNull
     @Bean
     Scheduler scheduler,
-    @NotNull
-    String gitHubBaseUrl,
-    @NotNull
-    String stackOverFlowBaseUrl
+    @Bean
+    DataSourceValues dataSourceValues
 ) {
     public record Scheduler(boolean enable, @NotNull Duration interval, @NotNull Duration forceCheckDelay) {
+    }
+
+    public record DataSourceValues(String driverClassName, String url, String username, String password) {
     }
 }
